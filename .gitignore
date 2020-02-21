@@ -1,0 +1,9 @@
+.cache
+.env
+.idea/
+database/development.sqlite
+latest.xls
+node_modules
+package-lock.json
+public/build/**
+tmp

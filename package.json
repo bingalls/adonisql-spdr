@@ -1,0 +1,47 @@
+{
+  "name": "spdr",
+  "version": "0.0.1",
+  "description": "Scrape and display top stocks",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node ace test"
+  },
+  "keywords": [
+    "adonisjs",
+    "adonis-app"
+  ],
+  "author": "bruce.ingalls@gmail",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@adonisjs/ace": "^5.0.8",
+    "@adonisjs/auth": "^3.1.0",
+    "@adonisjs/bodyparser": "^2.0.9",
+    "@adonisjs/cors": "^1.0.7",
+    "@adonisjs/fold": "^4.0.9",
+    "@adonisjs/framework": "^5.0.13",
+    "@adonisjs/ignitor": "^2.0.8",
+    "@adonisjs/lucid": "^6.1.3",
+    "adonis-apollo-server": "^1.0.2",
+    "axios": "^0.19.2",
+    "graphql": "^0.11.7",
+    "graphql-tools": "^2.6.1",
+    "mysql": "^2.15.0",
+    "slugify": "^1.2.1",
+    "sqlite3": "^4.1.1",
+    "xlsx": "^0.15.5"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
+  },
+  "standard": {
+    "globals": [
+      "use",
+      "make"
+    ]
+  },
+  "autoload": {
+    "App": "./app"
+  }
+}

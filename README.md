@@ -58,11 +58,13 @@ and visit [http://127.0.0.1:3333](http://127.0.0.1:3333) to see the application 
 `database/development.sqlite` is configured & included by default.
 It's easy to download drivers for other DBs, such as MySQL or PgSQL
 For a new database, you can create the user `admin@example.org` for the examples below, by
+
 ```bash
 adonis seed
 ```
 
 To scrape SPDR data into the database, add the following into a cron job:
+
 ```bash
 cd spdr # wherever your project directory lives
 node ace scrape
@@ -71,14 +73,18 @@ node ace insert
 
 ## Examples
 Try [http://127.0.0.1:3333/graphiql](http://127.0.0.1:3333/graphiql)
+
 * `query{user(id:1){email}}`
 * `query{allUsers{id, email}}`
-* `query{allHoldings{ticker,name,weight,sector,created_at}}`
-* `query{holding(created_at:"2020-02-02", ticker:"GOOGL"){ticker,name,weight,sector,created_at}}`
 * `mutation{login(email:"admin@example.org", password:"password")}`
 * `mutation{createUser(email:"admin@example.org", password:"password"){user}}`
 
-### Advanced Example:
+The following require JWT (see **JWT Example**)
+
+* `query{allHoldings{ticker,name,weight,sector,created_at}}`
+* `query{holding(created_at:"2020-02-17", ticker:"GOOGL"){ticker,name,weight,sector,created_at}}`
+
+### JWT Example:
 Querying Holdings requires a valid JWT token.
 Get the token:
 Open [http://127.0.0.1:3333/graphiql](http://127.0.0.1:3333/graphiql)
@@ -95,15 +101,15 @@ Copy the token from the right hand results side:
 Download and install the free Insomnia app, a variant of Postman, Postwoman, etc. Currently, I've not been able to get GraphiQL nor GraphQL Playground to work with JWT, but these may improve their Developer eXperience in the future.
 
 In Insomnia, create a new workspace, as needed. Set the top to
-** POST http://127.0.0.1:3333/graphql/ **
+`POST http://127.0.0.1:3333/graphql/`
 
 Set the first tab to **GraphQL**
-  ` query{allHoldings{ticker,name,weight,sector,created_at}} `
+  `query{allHoldings{ticker,name,weight,sector,created_at}}`
 Set the second second, Auth tab to **Bearer**
-  *** Paste the JWT token here ***
+  ***Paste the JWT token here***
 Set the fourth, Header tab with
-  ` Content-Type application/json `
+  `Content-Type application/json`
 
 Click **Send**
-To test that JWT auth works, you can uncheck the `ENABLED` box
+To further test that JWT auth works, you can uncheck the `ENABLED` box in Insomnia's auth tab
  
